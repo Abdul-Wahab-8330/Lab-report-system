@@ -1,15 +1,25 @@
-import React from 'react'
-import list from '../../public/list.json'
-
+import React, { useEffect, useState } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import axios from 'axios'
 import Slider from "react-slick";
 import Cards from './Cards';
 
 const Freebook = () => {
+  const [book, setBook] = useState([])
+  useEffect(()=>{
+    const getBook = async()=>{
+      try {
+        const res = await axios.get("http://localhost:4001/book");
+        const data = res.data.filter((data)=>data.category==="Free")
+        setBook(data);
+      } catch (error) {
+        console.log("error: ",error);
+      }
+    }
+    getBook();
+  },[])
 
-  const filterData = list.filter((data) => data.category === 'Free')
   var settings = {
     dots: true,
     infinite: false,
@@ -53,7 +63,7 @@ const Freebook = () => {
         <p>This section offers an extensive collection of free books to help you learn and grow. For an even more engaging and in-depth experience, we invite you to explore our premium paid courses. Dive in and make the most of these resources today!</p>
         <div>
           <Slider {...settings}>
-            {filterData.map((item) => {
+            {book.map((item) => {
               return <Cards item={item} key={item.id} />
             })}
           </Slider>

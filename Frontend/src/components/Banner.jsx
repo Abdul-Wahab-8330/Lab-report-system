@@ -1,12 +1,15 @@
 import React from 'react'
 import bannerimg from '../../public/Banner.png'
+
+// #1DBF73
+// #0000FF
 const Banner = () => {
     return (
         <>
             <div className='mt-12 max-w-screen-2xl container mx-auto md:px-20 px-4 flex md:flex-row flex-col-reverse'>
                 <div className='md:w-1/2 w-full mt-12 md:mt-32'>
                     <div className='space-y-12'>
-                        <h1 className='text-4xl font-bold'>Hello, welcome here to learn something <span className='text-pink-500'>new everyday!!!</span></h1>
+                        <h1 className='text-4xl font-bold'> Hello, welcome here to learn something <span className='text-[#0000FF]'>new everyday!!!</span></h1>
                         <p className='text-xl'>
                             Book Store is an ultimate platform for reading lovers, take reading experience to another level with Book Store's ultimate deals and free book reading experiences!
                         </p>

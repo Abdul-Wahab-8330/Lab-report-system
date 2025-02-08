@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom'
 import Login from './Login';
 import { useAuth } from '../context/AuthProvider';
 import Logout from './Logout';
+import { FaFonticonsFi } from "react-icons/fa";
+import { IoMdArrowDropdown } from "react-icons/io";
+import { FaHospitalUser } from "react-icons/fa";
+import { FaList } from "react-icons/fa";
+import { IoMdCloudDone } from "react-icons/io";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { IoIosArrowDown } from "react-icons/io";
+
+
 const Navbar = () => {
     const [authUser, setAuthUser] = useAuth();
     console.log(authUser)
@@ -38,15 +47,48 @@ const Navbar = () => {
         }
     }, [])
     const navItems = (<>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/course'>Course</Link></li>
+
+        <div className='space-x-3 mr-5'>
+            <div className="dropdown dropdown-hover ">
+                <Link to='/' tabIndex={0} role="button" className="btn dark:bg-slate-900 dark:text-white bg-transparent border-slate-900 hover:bg-transparent  dark:border-white mx-1">Home
+                </Link>
+
+            </div>
+            {/* <li><Link to='/'>Home</Link></li> */}
+            {/* <li><Link to='/course'>Course</Link></li>
         <li><Link to='/contact'>Contact</Link></li>
-        <li><Link to='/about'>About</Link></li>
+        <li><Link to='/about'>About</Link></li> */}
+            <div className="dropdown dropdown-hover">
+                <div tabIndex={0} role="button" className="btn bg-transparent border-slate-900 hover:bg-transparent  dark:border-white mx-1 dark:bg-slate-900 dark:text-white">Entry Forms <IoIosArrowDown />
+                </div>
+                <ul tabIndex={0} className="dark:bg-slate-900 dark:text-white dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow ">
+                    <li className='dark:hover:bg-gray-500'><Link to='/register'><FaHospitalUser />
+                        Registration</Link></li>
+                    <li className='dark:hover:bg-gray-500'><Link to='/patientslist'><FaList />
+                        Patient List</Link></li>
+
+                </ul>
+            </div>
+
+            <div className="dropdown dropdown-hover">
+                <div tabIndex={0} role="button" className="btn dark:bg-slate-900 dark:text-white bg-transparent border-slate-900 hover:bg-transparent dark:border-white mx-1">Reports <IoIosArrowDown />                </div>
+                <ul tabIndex={0} className="dark:bg-slate-900 dark:text-white dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                    <li className='dark:hover:bg-gray-500'><Link to='/pendingreports'><AiOutlineLoading3Quarters />
+                        Pending Reports</Link></li>
+                    <li className='dark:hover:bg-gray-500'><Link to='/completedreports'><IoMdCloudDone />
+                        Completed Reports</Link></li>
+                </ul>
+            </div>
+
+            <div className="dropdown dropdown-hover">
+                <Link to='/admin' tabIndex={0} role="button" className="btn dark:bg-slate-900 dark:text-white bg-transparent border-slate-900 hover:bg-transparent  dark:border-white mx-1">Admin</Link>
+            </div>
+        </div>
     </>)
     return (
         <div className=''>
-            <div className={`dark:bg-slate-900 z-50 max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 ${sticky ? "shadow-md " : ""} `}>
-                <div className="navbar bg-base-100 dark:bg-slate-900 dark:text-white" >
+            <div className={`dark:bg-slate-900 bg-base-100  z-50 max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 ${sticky ? "shadow-md dark:shadow-md dark:shadow-gray-600" : "shadow-md dark:shadow-md dark:shadow-gray-800"} `}>
+                <div className="navbar  bg-base-100 dark:bg-slate-900 dark:text-white" >
                     <div className="navbar-start">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -67,9 +109,11 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className="dark:bg-slate-900 dark:text-white menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                                 {navItems}
+
                             </ul>
                         </div>
-                        <Link to='/' className=" text-2xl font-bold cursor-pointer">Book Store</Link>
+
+                        <Link to='/' className=" text-2xl font-bold cursor-pointer">LAB System</Link>
                     </div>
                     <div className="navbar-end space-x-3">
                         <div className="navbar-center hidden lg:flex">
@@ -77,7 +121,7 @@ const Navbar = () => {
                                 {navItems}
                             </ul>
                         </div>
-                        <div className='hidden md:block'>
+                        {/* <div className='hidden md:block'>
                             <label className="px-3 py-2 border rounded-md flex items-center gap-2">
                                 <input type="text" className="grow outline-none dark:bg-slate-900 dark:text-white" placeholder="Search" />
                                 <svg
@@ -91,7 +135,7 @@ const Navbar = () => {
                                         clipRule="evenodd" />
                                 </svg>
                             </label>
-                        </div>
+                        </div> */}
                         <div>
                             <label className="swap swap-rotate">
                                 {/* this hidden checkbox controls the state */}
@@ -131,6 +175,12 @@ const Navbar = () => {
                     </div>
                 </div>
             </div >
+
+
+
+
+
+
         </div>
     )
 }

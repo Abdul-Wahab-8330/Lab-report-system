@@ -5,6 +5,7 @@ import { FaDeleteLeft } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai";
 import axios from 'axios'
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
 
@@ -45,9 +46,9 @@ const Register = () => {
         refNo, 
         tests
       });
-  
+      toast.success('Patient Registered!')
       console.log("Patient Registered Successfully:", response.data);
-  
+
       reset();
       setRefNo(generateRefNo());
       setTests([]);
@@ -76,10 +77,10 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 min-h-screen">
+    <div className="max-w-screen-2xl mx-auto md:px-6 px-4 min-h-screen">
       <Navbar />
       <div className="pt-16"></div>
-      <div className="w-full border border-gray-400 dark:border-gray-200 mx-auto p-8 bg-white shadow-lg rounded-lg mt-10 dark:bg-slate-900 text-white">
+      <div className="w-full border border-gray-400 dark:border-gray-500 mx-auto p-8 bg-white shadow-lg rounded-lg mt-10 dark:bg-slate-900 text-white">
         <div className="flex justify-between ">
           <h2 className="text-3xl dark:text-white font-bold text-black mb-6 text-left ">
             Patient Registration
@@ -100,18 +101,18 @@ const Register = () => {
               <input type="text" value={refNo} readOnly className="w-full px-4 py-3 border rounded-md bg-gray-200 font-semibold text-gray-700" />
             </div>
             <div>
-              <label className="block text-gray-700 font-semibold dark:text-white">Patient Name</label>
+              <label className="block text-gray-700 font-semibold dark:text-white">Patient Name <span className="star">*</span></label>
               <input type="text" {...register("patientName", { required: "Patient Name is required" })} className="w-full px-4 py-3 border rounded-md focus:ring focus:ring-[#0000FF] text-black" placeholder="Enter Patient Name" />
               {errors.patientName && <p className="text-red-500 text-sm">{errors.patientName.message}</p>}
             </div>
             <div>
-              <label className="block text-gray-700 font-semibold dark:text-white">Phone Number</label>
+              <label className="block text-gray-700 font-semibold dark:text-white">Phone Number <span className="star">*</span></label>
               <input type="tel" {...register("phoneNumber", { required: "Phone Number is required" })} className="w-full px-4 py-3 border rounded-md focus:ring focus:ring-[#0000FF] text-black" placeholder="Enter Phone Number" />
               {errors.phoneNumber && <p className="text-red-500 text-sm">{errors.phoneNumber.message}</p>}
             </div>
 
             <div>
-              <label className="block text-gray-700 font-semibold dark:text-white">CNIC No</label>
+              <label className="block text-gray-700 font-semibold dark:text-white">CNIC No <span className="star">*</span></label>
               <input
                 type="text"
                 {...register("cnicNo", { required: "CNIC is required" })}
@@ -122,7 +123,7 @@ const Register = () => {
             </div>
 
             <div>
-              <label className="block text-gray-700 font-semibold dark:text-white   ">Gender</label>
+              <label className="block text-gray-700 font-semibold dark:text-white   ">Gender <span className="star">*</span></label>
               <select
                 {...register("gender", { required: "Gender is required" })}
                 className="w-full px-4 py-3 border rounded-md focus:ring focus:ring-[#0000FF]  text-black"
@@ -145,7 +146,7 @@ const Register = () => {
             </div>
 
             <div>
-              <label className="block text-gray-700 font-semibold dark:text-white  ">Age</label>
+              <label className="block text-gray-700 font-semibold dark:text-white  ">Age <span className="star">*</span></label>
               <input
                 type="number"
                 {...register("age", { required: "Age is required" })}
@@ -156,7 +157,7 @@ const Register = () => {
             </div>
 
             <div>
-              <label className="block text-gray-700 font-semibold dark:text-white">Consultant</label>
+              <label className="block text-gray-700 font-semibold dark:text-white">Consultant <span className="star">*</span></label>
               <select
                 {...register("consultant", { required: "Age Type is required" })}
                 className="w-full px-4 py-3 border rounded-md focus:ring focus:ring-[#0000FF] text-black"

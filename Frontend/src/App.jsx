@@ -10,6 +10,9 @@ import { Toaster } from 'react-hot-toast'
 import { useAuth } from './context/AuthProvider'
 import Register from './components/Register'
 import PatientList from './components/Patientlist'
+import PatientDetail from './components/PatientDetail'
+import PendingReports from './components/PendingReports'
+import CompletedReports from './components/CompletedReports'
 const App = () => {
   const [authUser, setAuthUser] = useAuth();
   console.log(authUser)
@@ -24,6 +27,9 @@ const App = () => {
     <Route path="/about" element={<About/>}/>
     <Route path="/register" element={<Register/>}/>
     <Route path="/patientslist" element={<PatientList/>}/>
+    <Route path="/patients/:id" element={<PatientDetail />} />
+    <Route path="/pending-reports" element={<PendingReports />} />
+    <Route path="/completed-reports" element={<CompletedReports />} />
     </Routes>
     <Toaster/>
     </BrowserRouter>

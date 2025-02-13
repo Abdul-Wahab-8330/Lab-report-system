@@ -5,7 +5,7 @@ import cors from 'cors'
 
 import bookRoute from './route/book.route.js'
 import userRoute from './route/user.route.js'
-
+import patientRoute from "./route/patient.route.js";
 dotenv.config()
 
 const app = express()
@@ -30,6 +30,7 @@ app.use(express.json())
 //defining routes
 app.use('/book',bookRoute);
 app.use('/user',userRoute);
+app.use("/patients", patientRoute);
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`)

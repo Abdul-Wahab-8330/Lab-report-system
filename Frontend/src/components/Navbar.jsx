@@ -10,7 +10,8 @@ import { FaList } from "react-icons/fa";
 import { IoMdCloudDone } from "react-icons/io";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
-
+import Logo from '../assets/logo.png'
+import { FaEdit } from "react-icons/fa";
 
 const Navbar = () => {
     const [authUser, setAuthUser] = useAuth();
@@ -66,6 +67,8 @@ const Navbar = () => {
                         Registration</Link></li>
                     <li className='dark:hover:bg-gray-500'><Link to='/patientslist'><FaList />
                         Patient List</Link></li>
+                    <li className='dark:hover:bg-gray-500'><Link to='/pending-reports'><FaEdit />
+                        Enter Results</Link></li>
 
                 </ul>
             </div>
@@ -73,9 +76,9 @@ const Navbar = () => {
             <div className="dropdown dropdown-hover">
                 <div tabIndex={0} role="button" className="btn dark:bg-slate-900 dark:text-white bg-transparent border-slate-900 hover:bg-transparent dark:border-white mx-1">Reports <IoIosArrowDown />                </div>
                 <ul tabIndex={0} className="dark:bg-slate-900 dark:text-white dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                    <li className='dark:hover:bg-gray-500'><Link to='/pendingreports'><AiOutlineLoading3Quarters />
+                    <li className='dark:hover:bg-gray-500'><Link to='/pending-reports'><AiOutlineLoading3Quarters />
                         Pending Reports</Link></li>
-                    <li className='dark:hover:bg-gray-500'><Link to='/completedreports'><IoMdCloudDone />
+                    <li className='dark:hover:bg-gray-500'><Link to='/completed-reports'><IoMdCloudDone />
                         Completed Reports</Link></li>
                 </ul>
             </div>
@@ -87,8 +90,8 @@ const Navbar = () => {
     </>)
     return (
         <div className=''>
-            <div className={`dark:bg-slate-900 bg-base-100  z-50 max-w-screen-2xl container mx-auto md:px-20 px-4 fixed top-0 left-0 right-0 ${sticky ? "shadow-md dark:shadow-md dark:shadow-gray-600" : "shadow-md dark:shadow-md dark:shadow-gray-800"} `}>
-                <div className="navbar  bg-base-100 dark:bg-slate-900 dark:text-white" >
+            <div className={`dark:bg-slate-900 bg-base-100 z-50 mx-auto md:px-6 px-4 fixed top-0 left-0 right-0 ${sticky ? "shadow-md dark:shadow-md dark:shadow-gray-600" : "shadow-md dark:shadow-md dark:shadow-gray-800"} `}>
+                <div className="navbar  bg-base-100 dark:bg-slate-900 dark:text-white " >
                     <div className="navbar-start">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -113,7 +116,7 @@ const Navbar = () => {
                             </ul>
                         </div>
 
-                        <Link to='/' className=" text-2xl font-bold cursor-pointer">LAB System</Link>
+                        <Link to='/' className="text-2xl font-semibold cursor-pointer flex items-center dark:text-slate-400 text-slate-700"><img className='w-12 mr-5' src={Logo} alt="" /> LAB SYSTEMS </Link>
                     </div>
                     <div className="navbar-end space-x-3">
                         <div className="navbar-center hidden lg:flex">
